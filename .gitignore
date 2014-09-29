@@ -1,0 +1,8 @@
+# ignore binaries
+bin
+
+# ignore libraries
+*.a
+*.dylib
+*.dll
+*.so
