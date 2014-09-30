@@ -1,6 +1,11 @@
+CC=clang++
+FLAGS=-g -Wall
+MACPORTSINCLUDE=-I/opt/local/include/
+MACPORTSLINK=-L/opt/local/lib/ 
+
 play:
-	clang++ src/main.cc -lbeecrypt -o bin/play
+	$(CC) src/main.cc -lbeecrypt -o bin/play
 
 # Because MacPorts likes to put things under /opt/local/...
 test: 
-	clang++ src/main.cc -I/opt/local/include/ -L/opt/local/lib/ -lbeecrypt -o bin/play
+	$(CC) src/main.cc $(MACPORTSINCLUDE) $(MACPORTSLINK) -lbeecrypt -o bin/play
