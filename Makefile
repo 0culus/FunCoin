@@ -1,11 +1,14 @@
 CC=clang++
-FLAGS=-g -Wall
+DEBUGFLAGS=-g -Wall
+CPP11=-std=c++11
 MACPORTSINCLUDE=-I/opt/local/include/
 MACPORTSLINK=-L/opt/local/lib/ 
 
 play:
-	$(CC) src/main.cc -lbeecrypt -o bin/play
+	$(CC) $(CPP11) src/main.cc -lbeecrypt -o bin/play
 
-# Because MacPorts likes to put things under /opt/local/...
-test: 
-	$(CC) src/main.cc $(MACPORTSINCLUDE) $(MACPORTSLINK) -lbeecrypt -o bin/play
+# Because MacPorts 
+	$(CC) $(CPP11) src/main.cc $(MACPORTSINCLUDE) $(MACPORTSLINK) -lbeecrypt -o bin/play
+
+clean:
+	rm bin/play
