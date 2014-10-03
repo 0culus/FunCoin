@@ -8,6 +8,7 @@ play:
 	$(CC) $(CPP11) src/main.cc -lbeecrypt -o bin/play
 
 # Because MacPorts 
+test:
 	$(CC) $(CPP11) src/main.cc $(MACPORTSINCLUDE) $(MACPORTSLINK) -lbeecrypt -o bin/play
 
 clean:
