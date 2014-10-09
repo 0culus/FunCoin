@@ -1,9 +1,9 @@
 FunCoin
 =======
 
-Randy, Rob, and Sean's Fall 2014 Cryptography semester project
+FunCoin is an experimental simplified cryptocurrency designed to explore and exhibit cryptocurrency concepts in a simple, presentable fashion. It is currently being developed by Randy Van Why, Rob Kelly, and Sean Turner as a class project for CSE 441 Cryptography and Applications at NMT.
 
-We should decide on a better name than FunCoin; I just chose it to get a repo thrown up.
+FunCoin is a great name for a great cryptocurrency.
 
 Dependencies
 ------------
