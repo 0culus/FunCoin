@@ -14,6 +14,7 @@ Resources For Fun and Edification
 ------------
 
 [The Bitcoin Paper](https://bitcoin.org/bitcoin.pdf)
+
 [Bitcoin Developer's Guide](https://bitcoin.org/en/developer-guide)
 
 Project Report
