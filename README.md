@@ -9,3 +9,10 @@ Dependencies
 ------------
 
 [beecrypt](http://beecrypt.sourceforge.net) -- Used as our main crypto library.
+
+Project Report
+------------
+
+I propose we choose an ACM style for the project report. I suppose we'll also need slides. 
+
+[ACM Publications Style Guide](http://www.acm.org/publications/latex_style/)
