@@ -1,0 +1,3 @@
+[submodule "beecrypt-4.2.1"]
+	path = beecrypt-4.2.1
+	url = https://github.com/0culus/beecrypt-4.2.1.git
