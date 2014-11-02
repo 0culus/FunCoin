@@ -6,7 +6,7 @@ MACPORTSINCLUDE=-I/opt/local/include/
 MACPORTSLINK=-L/opt/local/lib/ 
 
 play:
-	$(CC) $(CPP11) src/main.cc -lbeecrypt -o bin/play
+	$(CC) $(CPP11) src/main.cc $(BCINC) -lbeecrypt -o bin/play
 
 # Because MacPorts 
 test:
