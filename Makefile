@@ -1,5 +1,6 @@
 CC=clang++
 DEBUGFLAGS=-g -Wall
+BCINC=-I lib/beecrypt/include
 CPP11=-std=c++11
 MACPORTSINCLUDE=-I/opt/local/include/
 MACPORTSLINK=-L/opt/local/lib/ 
