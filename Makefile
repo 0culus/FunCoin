@@ -7,6 +7,7 @@ LDFLAGS=-L/opt/local/lib/ -Llib/beecrypt
 all:main beecrypt
 
 main:
+	mkdir -p bin
 	$(CC) $(CPP11) -g src/main.cc $(INCLUDE) $(LDFLAGS) -lbeecrypt -o bin/play
 
 #beecrypt things
