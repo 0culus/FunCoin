@@ -1,14 +1,13 @@
 CC=clang++
 DEBUGFLAGS=-g -Wall
-BCINC=-I lib/beecrypt/include
 CPP11=-std=c++11
-MACPORTSINCLUDE=-I/opt/local/include/
+INCLUDE=-I/opt/local/include/ -Ilib/beecrypt/include
 LDFLAGS=-L/opt/local/lib/ -Llib/beecrypt 
 
 all:main beecrypt
 
 main:
-	$(CC) $(CPP11) -g src/main.cc $(BCINC) $(LDFLAGS) -lbeecrypt -o bin/play
+	$(CC) $(CPP11) -g src/main.cc $(INCLUDE) $(LDFLAGS) -lbeecrypt -o bin/play
 
 #beecrypt things
 beecrypt:
@@ -19,7 +18,7 @@ cleancrypt:
 
 # Because MacPorts 
 test:
-	$(CC) $(CPP11) src/main.cc $(MACPORTSINCLUDE) $(MACPORTSLINK) -lbeecrypt -o bin/play
+	$(CC) $(CPP11) src/main.cc $(INCLUDE) $(LDFLAGS) -lbeecrypt -o bin/play
 
 clean: cleancrypt
 	rm -rf bin
