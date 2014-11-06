@@ -4,9 +4,9 @@ CPP11=-std=c++11
 INCLUDE=-I/opt/local/include/ -Ilib/beecrypt/include
 LDFLAGS=-L/opt/local/lib/ -Llib/beecrypt 
 
-all:main beecrypt
+all:main
 
-main:
+main: beecrypt
 	mkdir -p bin
 	$(CC) $(CPP11) -g src/main.cc $(INCLUDE) $(LDFLAGS) -lbeecrypt -o bin/play
 
