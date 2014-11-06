@@ -3,12 +3,12 @@ DEBUGFLAGS=-g -Wall
 BCINC=-I lib/beecrypt/include
 CPP11=-std=c++11
 MACPORTSINCLUDE=-I/opt/local/include/
-MACPORTSLINK=-L/opt/local/lib/ -Llib/beecrypt 
+LDFLAGS=-L/opt/local/lib/ -Llib/beecrypt 
 
 all:main beecrypt
 
 main:
-	$(CC) $(CPP11) -g src/main.cc $(BCINC) -lbeecrypt -o bin/play
+	$(CC) $(CPP11) -g src/main.cc $(BCINC) $(LDFLAGS) -lbeecrypt -o bin/play
 
 #beecrypt things
 beecrypt:
