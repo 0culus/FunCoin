@@ -1,3 +1,4 @@
-language: c++
-compiler: gcc
-script: make
+compiler: 
+- clang
+- gcc
+script: cd lib/openssl && ./config && make && cd ../../ && make

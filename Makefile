@@ -1,26 +1,21 @@
 CC=clang++
 DEBUGFLAGS=-g -Wall
 CPP11=-std=c++11
-INCLUDE=-I/opt/local/include/ -Ilib/beecrypt/include
-LDFLAGS=-L/opt/local/lib/ -Llib/beecrypt 
+INCLUDE=-I/opt/local/include/ -Ilib/openssl/include
+LDFLAGS=-L/opt/local/lib/ -L lib/openssl -lcrypto -lssl -ldl
 
-all:main
+all: main
 
-main: beecrypt
+main:
 	mkdir -p bin
-	$(CC) $(CPP11) -g src/main.cc $(INCLUDE) $(LDFLAGS) -lbeecrypt -o bin/play
+	$(CC) $(CPP11) -g src/main.cc $(INCLUDE) $(LDFLAGS) -o bin/play
 
-#beecrypt things
-beecrypt:
-	cd lib/beecrypt; sh autogen.sh; ./configure; make;
+openssl:
+	cd lib/openssl; ./config; make;
 
-cleancrypt:
-	make -C lib/beecrypt/ -k clean
+opensslclean:
+	make -C openssl/ -k clean
 
-# Because MacPorts 
-test:
-	$(CC) $(CPP11) src/main.cc $(INCLUDE) $(LDFLAGS) -lbeecrypt -o bin/play
-
-clean: cleancrypt
+clean:  opensslclean
 	rm -rf bin
 	mkdir bin
