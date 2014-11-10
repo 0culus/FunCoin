@@ -1,3 +1,6 @@
 [submodule "lib/beecrypt"]
 	path = lib/beecrypt
 	url = https://github.com/0culus/beecrypt-4.2.1.git
+[submodule "openssl"]
+	path = openssl
+	url = https://github.com/openssl/openssl
