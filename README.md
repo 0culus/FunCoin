@@ -23,3 +23,4 @@ Project Report
 I propose we choose an ACM style for the project report. I suppose we'll also need slides. 
 
 [ACM Publications Style Guide](http://www.acm.org/publications/latex_style/)
+[![Build Status](https://magnum.travis-ci.com/0culus/FunCoin.svg?token=RjgBqvh54wshx4GyT1p3&branch=master)](https://magnum.travis-ci.com/0culus/FunCoin)
