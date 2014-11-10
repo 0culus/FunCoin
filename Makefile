@@ -6,7 +6,7 @@ LDFLAGS=-L/opt/local/lib/ -L lib/openssl -lcrypto -lssl -ldl
 
 all: main
 
-main: openssl
+main:
 	mkdir -p bin
 	$(CC) $(CPP11) -g src/main.cc $(INCLUDE) $(LDFLAGS) -o bin/play
 
