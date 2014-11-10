@@ -1,5 +1,4 @@
 compiler: 
-	- clang
-	- gcc
-script: 
-	cd lib/openssl && ./config && make && cd ../../ && make
+- clang
+- gcc
+script: cd lib/openssl && ./config && make && cd ../../ && make
