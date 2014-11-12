@@ -14,7 +14,7 @@ openssl:
 	cd lib/openssl; ./config; make;
 
 opensslclean:
-	make -C openssl/ -k clean
+	make -C lib/openssl/ -k clean
 
 clean:  opensslclean
 	rm -rf bin
