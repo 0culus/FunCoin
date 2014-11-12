@@ -12,20 +12,23 @@
 #include <memory>
 #include <chrono>
 #include <openssl/sha.h>
+#include "c_redblack.hpp"
 
 namespace blockchain {
+    
     typedef uint8_t byte;
     constexpr size_t size = 32;
     
     class block {
     protected:
-        std::unique_ptr<byte[size]> _hash;
-        int _magic = 0xD9B4BEF9;
+        std::unique_ptr<unsigned char[SHA256_DIGEST_LENGTH]> _hash;
+        int _magic = 0xD9B4BEF9; // just like bitcoin!
         int _blocksize;
         
-        
-        static_assert(sizeof(_hash) == 32, "Hash array must be exactly 256 bits");
-        
+    public:
+        block();
+        block(const block& other);
+        ~block();
     };
     
     class blockheader {
@@ -33,5 +36,11 @@ namespace blockchain {
         std::unique_ptr<byte[size]> hash_previous_block;
         std::unique_ptr<byte[size]> hash_current_block;
         time_point timestamp;
+        uint32_t nonce;
+        
+        blockheader();
+        blockheader(const blockheader& other);
+        ~blockheader();
     };
+    
 }
