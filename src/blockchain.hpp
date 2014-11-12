@@ -39,12 +39,13 @@ namespace blockchain {
     
     //! encapsulate the blockheader
     class blockheader {
-    public:
+    protected:
         std::unique_ptr<unsigned char[SHA256_DIGEST_LENGTH]> hash_previous_block;
         std::unique_ptr<unsigned char[SHA256_DIGEST_LENGTH]> hash_current_block;
         time_point timestamp;
         uint32_t nonce;
         
+    public:
         blockheader();
         blockheader(std::unique_ptr<unsigned char[]> hash_previous,
                     std::unique_ptr<unsigned char[]> hash_current,
