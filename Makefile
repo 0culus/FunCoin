@@ -16,6 +16,11 @@ openssl:
 opensslclean:
 	make -C lib/openssl/ -k clean
 
+redblack: src/c_redblack.hpp src/c_redblack_main.cpp
+	$(CC) $(CPP11) $(DEBUGFLAGS) $(INCLUDE) src/c_redblack_main.cpp -o bin/c_redlback_main
+
+blockchain: blockchain.hpp c_redblack.hpp
+
 clean:  opensslclean
 	rm -rf bin
 	mkdir bin
