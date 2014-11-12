@@ -16,6 +16,8 @@
 #include <openssl/engine.h>
 #include "c_redblack.hpp"
 
+using namespace rbm;
+
 namespace blockchain {
     
     typedef uint8_t byte;
@@ -25,7 +27,6 @@ namespace blockchain {
     class block {
     protected:
         blockheader _header;
-        //std::unique_ptr<unsigned char[SHA256_DIGEST_LENGTH]> _hash;
         constexpr int _magic = 0xD9B4BEF9; // just like bitcoin!
         int _blocksize;
         
@@ -40,10 +41,10 @@ namespace blockchain {
     //! encapsulate the blockheader
     class blockheader {
     protected:
-        std::unique_ptr<unsigned char[SHA256_DIGEST_LENGTH]> hash_previous_block;
-        std::unique_ptr<unsigned char[SHA256_DIGEST_LENGTH]> hash_current_block;
-        time_point timestamp;
-        uint32_t nonce;
+        std::unique_ptr<unsigned char[SHA256_DIGEST_LENGTH]> _hash_previous_block;
+        std::unique_ptr<unsigned char[SHA256_DIGEST_LENGTH]> _hash_current_block;
+        time_point _timestamp;
+        uint32_t _nonce;
         
     public:
         blockheader();
@@ -59,15 +60,21 @@ namespace blockchain {
             static_assert(std::is_same<decltype(nonce), uint32_t>::value,
                           "Nonce must be uint32_t");
             
-            this.hash_previous_block = hash_previous;
-            this.hash_current_block = hash_current;
-            this.timestamp = timestamp;
-            this.nonce = nonce;
+            this._hash_previous_block = hash_previous;
+            this._hash_current_block = hash_current;
+            this._timestamp = timestamp;
+            this._nonce = nonce;
         }
         
         //prevent copying of blockheaders
         blockheader(const blockheader&) = delete;
         ~blockheader();
+    };
+    
+    //! merkle tree using the left leaning redblack tree
+    //! https://github.com/amiller/redblackmerkle
+    class merkle {
+        
     };
     
 }
