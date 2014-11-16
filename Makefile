@@ -1,6 +1,7 @@
 CC=clang++
 DEBUGFLAGS=-g -Wall
 CPP11=-std=c++11
+OBJ=-c
 INCLUDE=-I/opt/local/include/ -Ilib/openssl/include
 LDFLAGS=-L/opt/local/lib/ -L lib/openssl -lcrypto -lssl -ldl
 
@@ -18,6 +19,9 @@ opensslclean:
 
 redblack: src/c_redblack.hpp src/c_redblack_main.cpp
 	$(CC) $(CPP11) $(DEBUGFLAGS) $(INCLUDE) src/c_redblack_main.cpp -o bin/c_redlback_main
+
+tree: src/tree.cc src/tree.hpp
+	$(CC) $(CPP11) $(DEBUGFLAGS) $(INCLUDE) -c  src/tree.cc
 
 blockchain: blockchain.hpp c_redblack.hpp
 
