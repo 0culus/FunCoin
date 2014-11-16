@@ -22,8 +22,8 @@ namespace tree {
     //! will be null for nonleaf nodes
     std::unique_ptr<T> payload;
 
-    std::unique_ptr<BasicTreeNode> left;
-    std::unique_ptr<BasicTreeNode> right;
+    std::unique_ptr<BasicTreeNode<T>> left;
+    std::unique_ptr<BasicTreeNode<T>> right;
 
   public:
     BasicTreeNode();
@@ -40,12 +40,12 @@ namespace tree {
     void setPayload(const T& payload);
     
     //! getter and setter for left child
-    std::unique_ptr<BasicTreeNode> getLeftChild();
+    std::unique_ptr<BasicTreeNode<T>> getLeftChild();
     
     void setLeftChild(const BasicTreeNode& node);
     
     //! getter and setter for right child
-    std::unique_ptr<BasicTreeNode> getRightChild();
+    std::unique_ptr<BasicTreeNode<T>> getRightChild();
     
     void setRightChild(const BasicTreeNode& node);
 
