@@ -5,9 +5,14 @@
  *
  */
 
+#pragma once
+
 #include <memory>
 #include <iomanip>
 #include <vector>
+#include <iostream>
+#include <string>
+#include <sstream>
 
 namespace tree {
 
