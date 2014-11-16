@@ -19,7 +19,7 @@ template<typename T>
 std::string BasicTreeNode<T>::getHash() {
   
   //! cases:
-  // node is a leaf
+  // node is a leaf, so hash is the transaction
   if (!left && !right) {
     std::stringstream s;
     s << this->payload;
@@ -36,7 +36,7 @@ std::string BasicTreeNode<T>::getHash() {
     return "" + this->right.getHash();
   }
   
-  // node is not a leaf, so hash is concat of left and right children
+  // node is not a leaf, but has both children
   else {
     return this->left.getHash() + this->right.getHash();
   }
