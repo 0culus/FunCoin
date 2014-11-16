@@ -5,14 +5,18 @@
  *
  */
 
-#include "tree.h"
+#include "tree.hpp"
+
+using namespace tree;
 
 //! make sure payload is null for a new node
-tree::BasicTreeNode() {
+template<typename T>
+BasicTreeNode<T>::BasicTreeNode() {
   this->payload = NULL;
 }
 
-std::string tree::getHash() {
+template<typename T>
+std::string BasicTreeNode<T>::getHash() {
   
   //! cases:
   // node is a leaf
@@ -38,26 +42,32 @@ std::string tree::getHash() {
   }
 }
 
-std::unique_ptr<T> tree::getPayload() {
+template<typename T>
+std::unique_ptr<T> BasicTreeNode<T>::getPayload() {
   return this->payload;
 }
 
-void tree:setPayload(const T& payload) {
+template<typename T>
+void BasicTreeNode<T>::setPayload(const T& payload) {
   this->payload = payload;
 }
 
-std::unique_ptr<T> tree::getLeftChild() {
+template<typename T>
+std::unique_ptr<T> BasicTreeNode<T>::getLeftChild() {
   return this->left;
 }
 
-void tree::setLeftChild(const BasicTreeNode& node) {
+template<typename T>
+void BasicTreeNode<T>::setLeftChild(const BasicTreeNode& node) {
   this->left = node;
 }
 
-std::unique_ptr<T> tree::getRightChild() {
+template<typename T>
+std::unique_ptr<T> BasicTreeNode<T>::getRightChild() {
   return this->right;
 }
 
-void tree::setRightChild(const BasicTreeNode& node) {
+template<typename T>
+void BasicTreeNode<T>::setRightChild(const BasicTreeNode& node) {
   this->right = node;
 }
