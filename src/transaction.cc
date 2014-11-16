@@ -22,5 +22,5 @@ Fundoshi Transaction::getUnspent() {
     return amount;
   }
 
-  return -1;
+  return 0;
 }
