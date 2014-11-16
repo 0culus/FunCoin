@@ -53,7 +53,7 @@ void BasicTreeNode<T>::setPayload(const T& payload) {
 }
 
 template<typename T>
-std::unique_ptr<T> BasicTreeNode<T>::getLeftChild() {
+std::unique_ptr<BasicTreeNode<T>> BasicTreeNode<T>::getLeftChild() {
   return this->left;
 }
 
@@ -63,7 +63,7 @@ void BasicTreeNode<T>::setLeftChild(const BasicTreeNode& node) {
 }
 
 template<typename T>
-std::unique_ptr<T> BasicTreeNode<T>::getRightChild() {
+std::unique_ptr<BasicTreeNode<T>> BasicTreeNode<T>::getRightChild() {
   return this->right;
 }
 
