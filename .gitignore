@@ -3,6 +3,7 @@ bin
 
 # ignore libraries
 *.a
+*.o
 *.dylib
 *.dll
 *.so
