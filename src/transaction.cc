@@ -1,13 +1,26 @@
-#include <iostream>
-#include <iomanip>
-#include <sstream>
-#include <string>
-#include <openssl/sha.h>
+#include "transaction.h"
 
-class Transaction 
-{
-  /*amount in Satoshi*/
-  unsigned long amount;
-  std::set<Transaction&> input;
-  
+Transaction::Transaction(Fundoshi amount, Transaction* input) {
+  this->amount = amount;
+  this->input.insert(input);
+  this->output = NULL;
+  this->change = NULL;
+}
+
+void Transaction::addInput(Fundoshi amount, Transaction* input) {
+  this->amount += amount;
+  this->input.insert(input);
+}
+
+void Transaction::addOutput(Transaction *output, Transaction *change) {
+  this->output = output;
+  this->change = change;
+}
+
+Fundoshi Transaction::getUnspent() {
+  if (output == NULL) {
+    return amount;
+  }
+
+  return -1;
 }
