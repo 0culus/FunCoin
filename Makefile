@@ -1,6 +1,7 @@
 CC=clang++
 DEBUGFLAGS=-g -Wall
 CPP11=-std=c++11
+CPP14=-std=c++1y
 OBJ=-c
 INCLUDE=-I/opt/local/include/ -Ilib/openssl/include
 LDFLAGS=-L/opt/local/lib/ -L lib/openssl -lcrypto -lssl -ldl
@@ -21,7 +22,7 @@ redblack: src/c_redblack.hpp src/c_redblack_main.cpp
 	$(CC) $(CPP11) $(DEBUGFLAGS) $(INCLUDE) src/c_redblack_main.cpp -o bin/c_redlback_main
 
 tree: src/tree.cc src/tree.hpp
-	$(CC) $(CPP11) $(DEBUGFLAGS) $(INCLUDE) -c  src/tree.cc
+	$(CC) $(CPP14) $(DEBUGFLAGS) $(INCLUDE) $(OBJ) src/tree.cc
 
 blockchain: blockchain.hpp c_redblack.hpp
 
