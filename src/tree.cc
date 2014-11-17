@@ -27,13 +27,14 @@ std::string BasicTreeNode<T>::getHash() {
   }
   
   // node is not a leaf, but left child exists
+  // so we double
   else if (left && !right) {
-    return this->left.getHash() + "";
+    return this->left.getHash() + this->left.getHash();
   }
   
   // node is not a leaf, but right child exists
   else if (!left && right) {
-    return "" + this->right.getHash();
+    return this->right.getHash() + this->right.getHash();
   }
   
   // node is not a leaf, but has both children
