@@ -27,7 +27,8 @@ std::string BasicTreeNode<T>::getHash() {
   }
   
   // node is not a leaf, but left child exists
-  // so we double
+  // so we concatenate the existing hash with
+  // itself
   else if (left && !right) {
     return this->left.getHash() + this->left.getHash();
   }
