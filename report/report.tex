@@ -18,7 +18,7 @@ The group used OpenSSL to handle most of the cryptographic functionality. OpenSS
 The basic approach we took was to familiarize ourselves with the Bitcoin paper\cite{nakamoto:bitcoin} and the Bitcoin Developer Guide \cite{dev:guide}. 
 
 \subsection{Block Chain}\label{blockchain}
-This image from the developer guide sums up the basic structure of the blockchain nicely 
+Figure \ref{figblockchain} (from the developer guide) sums up the basic structure of the blockchain nicely. 
 
 \begin{figure}[h!]\label{figblockchain}
 	\centering
@@ -26,7 +26,7 @@ This image from the developer guide sums up the basic structure of the blockchai
 	\caption{Simplified block chain overview from \cite{dev:guide}}
 \end{figure}
 
-The blockchain constitutes the public ledger. It keeps transactions in order with timestamps and provides protection against double spending. The heart of the blockchain is the Merkle tree. As can be seen in Figure \ref{figblockchain}, every block holds the root of this Merkle tree. This significantly improves the storage complexity of the blockchain since the Merkle root is a small and easily transmitted piece of data that describes all the transactions in the block. And since the block header already contains the hash of the previous block header, this gives us all the information we need. 
+The blockchain constitutes the public ledger. It keeps transactions in order with timestamps and provides protection against double spending. The heart of the blockchain is the Merkle tree. As can be seen in Figure \ref{figblockchain}, every block holds the root of this Merkle tree. This significantly improves the storage complexity of the blockchain since the Merkle root is a small and easily transmitted piece of data that describes all the transactions in the block. And since the block header already contains the hash of the previous block header, this gives us all the information we need about transactions. 
 
 
 Our blockchain consists of a simplified Merkle tree-like tree structure that doesn't do anything fancy cryptographically speaking. Our ``transactions" are just human readable strings detailing where fundoshis went and how many. This way, the ``merkle root" can just be actually read, and the whole structure of the block chain is simple to understand.
