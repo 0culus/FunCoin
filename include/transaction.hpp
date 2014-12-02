@@ -43,7 +43,17 @@ class Transaction
    */
   Fundoshi getUnspent();
 
-  std::string getPayload();
+  /**
+   * Returns the signature of this transaction.
+   * @return the signature
+   */
+  std::string getSignature();
+
+  /**
+   * Returns all the inputs of this transaction
+   * @return the inputs
+   */
+  std::vector<Transaction*> getInputs();
   
   friend std::ostream &operator<<(std::ostream &output, const Transaction &T) {
     output << T.signature << " $" <<  T.amount << std::endl;

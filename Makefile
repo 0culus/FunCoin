@@ -1,7 +1,7 @@
 CC=clang++
 DEBUGFLAGS=-g -Wall
 CPP11=-std=c++11
-INCLUDE=-I/opt/local/include/ -Ilib/openssl/include
+INCLUDE=-I/opt/local/include/ -Ilib/openssl/include -I include
 LDFLAGS=-L/opt/local/lib/ -L lib/openssl -lcrypto -lssl -ldl
 
 all: main
@@ -21,7 +21,9 @@ redblack: src/c_redblack.hpp src/c_redblack_main.cpp
 blockchain: blockchain.hpp c_redblack.hpp
 
 transaction:
-	$(CC) $(CPP11) -g src/transaction.cc $(INCLUDE) $(LDFLAGS) -c -o build/transaction.o	
+	$(CC) $(CPP11) -g src/transaction.cc $(INCLUDE) $(LDFLAGS) -c -o build/transaction.o
+user:
+	$(CC) $(CPP11) -g src/user.cc $(INCLUDE) $(LDFLAGS) -c -o build/user.o	
 
 clean:  opensslclean
 	rm -rf bin

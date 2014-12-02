@@ -1,4 +1,4 @@
-#include "transaction.h"
+#include "transaction.hpp"
 
 Transaction::Transaction(Fundoshi amount, Transaction* input, std::string signature) {
   this->amount = amount;
@@ -26,7 +26,12 @@ Fundoshi Transaction::getUnspent() {
   return 0;
 }
 
-std::string Transaction::getPayload()
+std::string Transaction::getSignature()
 {
   return signature;
+}
+
+std::vector<Transaction*> Transaction::getInputs()
+{
+  return input;
 }
