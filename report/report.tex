@@ -1,10 +1,14 @@
 \documentclass[12pt]{article}
+\usepackage{hyperref}
+\usepackage{cite}
 
 \begin{document}
 \title{CSE441 Semester Project: FunCoin}
 \author{Rob Kelly\\Sean Turner\\Randy Van Why}
 \maketitle
 
+\section{Background}
+In October of 2008, a white paper\cite{nakamoto:bitcoin} describing Bitcoin, a decentralized peer-to-peer electronic cash system, was published through cryptography mailing lists.
 
 \section{OpenSSL}
 The group used OpenSSL to handle most of the cryptographic functionality. OpenSSL provides a nice interface for performing digital signitures using DSA.
@@ -17,5 +21,8 @@ Additional future projects include: implementing a wallet, considering different
 
 \subsection{Unsolved Problems}
 Our biggest unsolved problem (and opportunity for Section \ref{future}) is to decentralize for a more accurate portrayal of how real cryptocurrencies function. Additionally, 
+
+\bibliographystyle{abbrv}
+\bibliography{report}
 
 \end{document}
