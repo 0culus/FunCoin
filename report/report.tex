@@ -2,7 +2,7 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{cite}
-\usepackage{graphicx}
+
 
 \begin{document}
 \title{CSE441 Semester Project: FunCoin}
@@ -20,7 +20,9 @@ the most popular cryptocurrency implementation: Bitcoin.
 \subsection{The BitCoin Implementation: An Overview}
 The most natural starting point was for the group to think about the coin itself.
 In Bitcoin-like cryptocurrencies, the coins that can be spent and mined are not
-like traditional coins or electronic currency.
+like traditional coins or electronic currency. Much of the implementation details
+was clarified with the help of the Bitcoin paper\cite{nakamoto:bitcoin} and the
+Bitcoin Developer Guide \cite{dev:guide}. 
 
 \subsection{Transactions}
 While it is obvious that Bitcoins are not physical coins, a surprising fact about
@@ -44,7 +46,26 @@ messages. The authors realize that this approach is obviously not cryptographica
 the approach keeps to the main goal of design of a cryptocurrency that is easy to understand from an
 outward perspective.
 
-\subsection{Verifying Bitcoin Ownership}
+\subsection{Block Chain}\label{blockchain}
+Figure \ref{figblockchain} (from the developer guide) sums up the basic structure of the blockchain nicely. 
+
+\begin{figure}[h!]\label{figblockchain}
+	\centering
+	\includegraphics[scale=0.5]{en-blockchain-overview.png}
+	\caption{Simplified block chain overview from \cite{dev:guide}}
+\end{figure}
+
+The blockchain constitutes the public ledger. It keeps transactions in order with timestamps and provides protection
+against double spending. The heart of the blockchain is the Merkle tree. As can be seen in Figure \ref{figblockchain},
+every block holds the root of this Merkle tree. This significantly improves the storage complexity of the blockchain since
+the Merkle root is a small and easily transmitted piece of data that describes all the transactions in the block. And since
+the block header already contains the hash of the previous block header, this gives us all the information we need about transactions. 
+
+Our proposed simplified blockchain consists of a simplified Merkle tree-like tree structure sans the cryptographic hashing. Our
+"transactions" are just human readable strings detailing where fundoshis went and how many.
+This way, the "merkle root" can just be actually read, and the whole structure of the block chain is simple to understand.
+
+\subsection{Verifying Coin Ownership}
 Before Party B can accept payment, they must first verify that Party A has the Bitcoin to spend in the first
 place. This is done by inspecting the blockchain. Party A sends Party B the pending transaction. Since every
 transaction contains the history of all transactions leading up to it, Party B can check the blockchain
@@ -60,30 +81,28 @@ Our simplified cryptocurrency would validate ownership by simply following the t
 genes of a single FunCoin. That would take care of local validity (to ensure the transaction is well formed).
 From there, the receiver would check global validity by looking for the transaction history on the blockchain.
 
+\subsection{Announcement of the Transaction}
+From here, after the signature has occurred, the receiver announces the transaction to the rest of the network.
+This announcement can be acheieved in different ways. In the Bitcoin protocol, the announcement is propagated throughout
+the network with the goal of reaching as many network nodes as possible. In our simple protocol, we are assuming
+that the pedagogical demonstrations will be small and thus transmitting the record of the transaction would be very trivial.
 
+\subsubsection{Detecting Local Double-Spending Attacks}
+Once a transaction has been announced, all nodes that "hear" the transaction save the transaction to the current block to
+add to the blockchain. Any local double-spending attacks can be detected by checking the current block for a double spend.
+Thus all nodes will reject any new transactions that attempt two different spends on the current block. This, however, does
+not eliminate the possibility of a double spending (see \ref{doublespend}).
+
+\subsection{Transaction Rounds}
+Before a block is created and added to the blockchain, the Bitcoin protocol allows for a number of transactions to occur
+during a time period. In the Bitcoin protocol, that time period is about 10 minutes (or the amount of time it takes to "mine"
+the previous block \ref{mining}). 
+
+\subsection{Double Spending and the 51\% Attack}\label{doublespend}
 
 \section{Background}
 In October of 2008, a white paper\cite{nakamoto:bitcoin} describing Bitcoin, a decentralized peer-to-peer electronic cash system, was published through cryptography mailing lists.
 
-\section{OpenSSL}
-The group used OpenSSL to handle most of the cryptographic functionality. OpenSSL provides a nice interface for performing digital signitures using DSA.
-
-\section{Approach}\label{approach}
-The basic approach we took was to familiarize ourselves with the Bitcoin paper\cite{nakamoto:bitcoin} and the Bitcoin Developer Guide \cite{dev:guide}. 
-
-\subsection{Block Chain}\label{blockchain}
-Figure \ref{figblockchain} (from the developer guide) sums up the basic structure of the blockchain nicely. 
-
-\begin{figure}[h!]\label{figblockchain}
-	\centering
-	\includegraphics[scale=0.5]{en-blockchain-overview.png}
-	\caption{Simplified block chain overview from \cite{dev:guide}}
-\end{figure}
-
-The blockchain constitutes the public ledger. It keeps transactions in order with timestamps and provides protection against double spending. The heart of the blockchain is the Merkle tree. As can be seen in Figure \ref{figblockchain}, every block holds the root of this Merkle tree. This significantly improves the storage complexity of the blockchain since the Merkle root is a small and easily transmitted piece of data that describes all the transactions in the block. And since the block header already contains the hash of the previous block header, this gives us all the information we need about transactions. 
-
-
-Our blockchain consists of a simplified Merkle tree-like tree structure that doesn't do anything fancy cryptographically speaking. Our ``transactions" are just human readable strings detailing where fundoshis went and how many. This way, the ``merkle root" can just be actually read, and the whole structure of the block chain is simple to understand.
 
 \section{Discussion}\label{future}
 \subsection{Future Work}\label{work}
