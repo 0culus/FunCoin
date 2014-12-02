@@ -43,6 +43,23 @@ messages. The authors realize that this approach is obviously not cryptographica
 the approach keeps to the main goal of design of a cryptocurrency that is easy to understand from an
 outward perspective.
 
+\subsection{Verifying Bitcoin Ownership}
+Before Party B can accept payment, they must first verify that Party A has the Bitcoin to spend in the first
+place. This is done by inspecting the blockchain. Party A sends Party B the pending transaction. Since every
+transaction contains the history of all transactions leading up to it, Party B can check the blockchain
+to ensure that the transaction history given is valid. Party B must check that the history
+exists in the blockchain.
+
+Bitcoin accomplishes validity via hashes. Party B will take the previous hash of all transactions before the pending one
+and check to make sure that that hash exists in the blockchain. The actual Bitcoin implementation accomplishes
+this in a space-saving manner via a merkel tree (see \ref{blockchain}).
+
+%We may want to rethink this if we end up using a different design
+Our simplified cryptocurrency would validate ownership by simply following the transaction history to the
+genes of a single FunCoin. That would take care of local validity (to ensure the transaction is well formed).
+From there, the receiver would check global validity by looking for the transaction history on the blockchain.
+
+
 
 \section{Background}
 In October of 2008, a white paper\cite{nakamoto:bitcoin} describing Bitcoin, a decentralized peer-to-peer electronic cash system, was published through cryptography mailing lists.
