@@ -6,3 +6,4 @@ bin
 *.dylib
 *.dll
 *.so
+*.o
