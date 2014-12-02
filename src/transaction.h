@@ -1,9 +1,14 @@
+#pragma once
+
 #include <iostream>
 #include <iomanip>
 #include <sstream>
 #include <string>
+#include <vector>
+
 #include <openssl/sha.h>
-#include <set>
+#include <openssl/dsa.h>
+#include <openssl/engine.h>
 
 /*The smallest FunCoin unit*/
 using Fundoshi = unsigned long;
@@ -11,7 +16,7 @@ using Fundoshi = unsigned long;
 class Transaction 
 {
  public:
-  Transaction(Fundoshi amount, Transaction* input);
+  Transaction(Fundoshi amount, Transaction* input, std::string signature);
 
   /**
    * Adds an input to this transaction.
@@ -29,7 +34,7 @@ class Transaction
    * @param output, the output transaction
    * @param change, the change transaction
    */
-  void addOutput(Transaction *output, Transaction *change);
+  void addOutput(Transaction* output, Transaction* change);
 
   /**
    * Returns the unspent funcoin. If the ouput
@@ -37,17 +42,20 @@ class Transaction
    * @return unspent function if output = null, 0 otherwise
    */
   Fundoshi getUnspent();
+
+  std::string getPayload();
   
-  friend std::ostream &operator<<(std::ostream &output,
-                                  const Transaction &T) {
-    output << "Amount: " << T.amount << std::endl;
+  friend std::ostream &operator<<(std::ostream &output, const Transaction &T) {
+    output << T.signature << " $" <<  T.amount << std::endl;
     return output;
   }
 
- private:
+
   Fundoshi amount;
-  std::set<Transaction*> input;
+  std::string signature;
+  std::vector<Transaction*> input;
   Transaction* output;
   Transaction* change;
-
 };
+
+

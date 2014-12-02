@@ -1,18 +1,19 @@
 #include "transaction.h"
 
-Transaction::Transaction(Fundoshi amount, Transaction* input) {
+Transaction::Transaction(Fundoshi amount, Transaction* input, std::string signature) {
   this->amount = amount;
-  this->input.insert(input);
+  this->input.push_back(input);
   this->output = NULL;
   this->change = NULL;
+  this->signature = signature;
 }
 
 void Transaction::addInput(Fundoshi amount, Transaction* input) {
   this->amount += amount;
-  this->input.insert(input);
+  this->input.push_back(input);
 }
 
-void Transaction::addOutput(Transaction *output, Transaction *change) {
+void Transaction::addOutput(Transaction* output, Transaction* change) {
   this->output = output;
   this->change = change;
 }
@@ -21,6 +22,11 @@ Fundoshi Transaction::getUnspent() {
   if (output == NULL) {
     return amount;
   }
-
+  
   return 0;
+}
+
+std::string Transaction::getPayload()
+{
+  return signature;
 }
