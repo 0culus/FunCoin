@@ -1,13 +1,14 @@
 \documentclass[12pt]{article}
 \usepackage{hyperref}
 \usepackage{cite}
+\usepackage{graphicx}
 
 \begin{document}
 \title{CSE441 Semester Project: FunCoin}
 \author{Rob Kelly\\Sean Turner\\Randy Van Why}
 \maketitle
 
-<<<<<<< HEAD
+
 \section{Approach}
 \subsection{Motivation}
 The goal of this project was to provide a pedagogical overview of cryptocurrencies on the whole
@@ -20,12 +21,29 @@ The most natural starting point was for the group to think about the coin itself
 In Bitcoin-like cryptocurrencies, the coins that can be spent and mined are not
 like traditional coins or electronic currency.
 
+\subsection{Transactions}
 While it is obvious that Bitcoins are not physical coins, a surprising fact about
 the currency is that Bitcoins are not even single digital entities or files at all.
 Instead, Bitcoins are tracked and stored as transaction histories in a larger entity
-known as the blockchain. An individual 
+known as the blockchain. An individual wishing to "spend" a Bitcoin simply signs
+a hash of the transaction history and the receiver's public key using a digital signature
+protocol. This is simply a cryptographically secure message that states that Party A agreed
+to give the Bitcoin amount to Party B.
 
-=======
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=1]{transaction.png}
+  \caption{Original Bitcoin transaction design \cite{nakamoto:bitcoin}}
+\end{figure}
+
+Thus the existence of the Bitcoin itself is governed solely by the transaction history. For our
+simplified model we decided that each transaction would be a simple message indicating that Party
+A has send $x$ amount of FunCoin to Party B. Thus a fundoshi transaction is a chain of such simple
+messages. The authors realize that this approach is obviously not cryptographically secure. However,
+the approach keeps to the main goal of design of a cryptocurrency that is easy to understand from an
+outward perspective.
+
+
 \section{Background}
 In October of 2008, a white paper\cite{nakamoto:bitcoin} describing Bitcoin, a decentralized peer-to-peer electronic cash system, was published through cryptography mailing lists.
 
@@ -34,5 +52,5 @@ The group used OpenSSL to handle most of the cryptographic functionality. OpenSS
 
 \bibliographystyle{abbrv}
 \bibliography{report}
->>>>>>> c11783ffbf51196c46aaa182b60af7a8393ecbdd
+
 \end{document}
