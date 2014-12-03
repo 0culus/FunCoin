@@ -95,8 +95,13 @@ not eliminate the possibility of a double spending (see \ref{doublespend}).
 
 \subsection{Transaction Rounds}
 Before a block is created and added to the blockchain, the Bitcoin protocol allows for a number of transactions to occur
-during a time period. In the Bitcoin protocol, that time period is about 10 minutes (or the amount of time it takes to "mine"
-the previous block \ref{mining}). 
+during a time period. In the Bitcoin protocol, that time period is about 10 minutes (or the amount of time it takes to "mine" the previous block \ref{mining}). After the round of
+transaction collection is over, the miners begin verifying the transaction.
+
+\subsection{Mining}\lable{mining}
+Entities verify a block of transactions via the proof of work system (see \ref{proofwork}).
+The final verifier collects the newly generated coins as well as any change generated during
+transactions (these a known as ``transaction fees''). 
 
 \subsection{Double Spending and the 51\% Attack}\label{doublespend}
 
