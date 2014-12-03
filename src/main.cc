@@ -47,8 +47,17 @@ SYNOPSIS of the DSA library
  int    DSAparams_print_fp(FILE *fp, const DSA *x);
  int    DSA_print(BIO *bp, const DSA *x, int off);
 int    DSA_print_fp(FILE *bp, const DSA *x, int off);
-*/
 
+SHA Synopsis
+#include <openssl/sha.h>
+ unsigned char *SHA1(const unsigned char *d, unsigned long n,
+                  unsigned char *md);
+ int SHA1_Init(SHA_CTX *c);
+ int SHA1_Update(SHA_CTX *c, const void *data,
+                  unsigned long len);
+ int SHA1_Final(unsigned char *md, SHA_CTX *c);
+
+*/
 int main(void) {
   DSA* dsa = DSA_new();
 
