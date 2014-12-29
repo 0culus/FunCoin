@@ -45,7 +45,7 @@ std::string BasicTreeNode<T>::getHash() {
 }
 
 template<typename T>
-std::unique_ptr<T> BasicTreeNode<T>::getPayload() {
+decltype(auto) BasicTreeNode<T>::getPayload() {
   return this->payload;
 }
 
@@ -55,7 +55,7 @@ void BasicTreeNode<T>::setPayload(const T& payload) {
 }
 
 template<typename T>
-std::unique_ptr<BasicTreeNode<T>> BasicTreeNode<T>::getLeftChild() {
+decltype(auto) BasicTreeNode<T>::getLeftChild() {
   return this->left;
 }
 
@@ -65,7 +65,7 @@ void BasicTreeNode<T>::setLeftChild(const BasicTreeNode& node) {
 }
 
 template<typename T>
-std::unique_ptr<BasicTreeNode<T>> BasicTreeNode<T>::getRightChild() {
+decltype(auto) BasicTreeNode<T>::getRightChild() {
   return this->right;
 }
 

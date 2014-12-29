@@ -34,18 +34,18 @@ namespace tree {
     std::string getHash();
     
     //! getter and setter for payload
-    std::unique_ptr<T> getPayload();
+    decltype(auto) getPayload();
     
     //template<typename T>
     void setPayload(const T& payload);
     
     //! getter and setter for left child
-    std::unique_ptr<BasicTreeNode<T>> getLeftChild();
+    decltype(auto) getLeftChild();
     
     void setLeftChild(const BasicTreeNode& node);
     
     //! getter and setter for right child
-    std::unique_ptr<BasicTreeNode<T>> getRightChild();
+    decltype(auto) getRightChild();
     
     void setRightChild(const BasicTreeNode& node);
 
