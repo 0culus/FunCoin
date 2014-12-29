@@ -12,7 +12,7 @@ using namespace tree;
 //! make sure payload is null for a new node
 template<typename T>
 BasicTreeNode<T>::BasicTreeNode() {
-  this->payload = NULL;
+  this->payload = nullptr;
 }
 
 template<typename T>
