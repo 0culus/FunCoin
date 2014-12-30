@@ -51,7 +51,7 @@ decltype(auto) BasicTreeNode<T>::getPayload() {
 
 template<typename T>
 void BasicTreeNode<T>::setPayload(const T& payload) {
-  this->payload = payload;
+  this->payload = std::make_unique<T>(payload);
 }
 
 template<typename T>
@@ -72,4 +72,19 @@ decltype(auto) BasicTreeNode<T>::getRightChild() {
 template<typename T>
 void BasicTreeNode<T>::setRightChild(const BasicTreeNode& node) {
   this->right = node;
+}
+
+int main(void) {
+  auto t1 = "alice-sends-bob-5-funcoin";
+  auto t2 = "trent-sends-alice-2-funcoin";
+  auto t3 = "bob-sends-alice-10-funcoin";
+  auto t4 = "trent-sends-bob-3-funcoin";
+  
+  // create root node
+  decltype(auto) MerkleRoot = new BasicTreeNode<std::string>();
+  MerkleRoot->setPayload(t1);
+  
+  decltype(auto) MerkleRootPtr = std::make_unique<BasicTreeNode<std::string>>(MerkleRoot);
+  
+  return 0;
 }
