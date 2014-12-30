@@ -1,4 +1,5 @@
 CC=clang++
+CXX=/opt/local/bin/clang++-mp-3.6
 DEBUGFLAGS=-g -Wall
 CPP11=-std=c++11
 CPP14=-std=c++1y
@@ -22,7 +23,7 @@ redblack: src/c_redblack.hpp src/c_redblack_main.cpp
 	$(CC) $(CPP11) $(DEBUGFLAGS) $(INCLUDE) src/c_redblack_main.cpp -o bin/c_redlback_main
 
 tree: src/tree.cc src/tree.hpp
-	$(CC) $(CPP14) $(DEBUGFLAGS) $(INCLUDE) $(OBJ) src/tree.cc
+	$(CXX) $(CPP14) $(DEBUGFLAGS) $(INCLUDE)  src/tree.cc
 
 blockchain: blockchain.hpp c_redblack.hpp
 
