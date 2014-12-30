@@ -84,7 +84,7 @@ int main(void) {
   decltype(auto) MerkleRoot = new BasicTreeNode<std::string>();
   MerkleRoot->setPayload(t1);
   
-  decltype(auto) MerkleRootPtr = std::make_unique<BasicTreeNode<std::string>>(MerkleRoot);
+  decltype(auto) MerkleRootPtr = std::make_unique<BasicTreeNode<std::string>>(*MerkleRoot);
   
   return 0;
 }
