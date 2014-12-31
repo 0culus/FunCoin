@@ -2,7 +2,7 @@ CC=clang++
 CXX=/opt/local/bin/clang++-mp-3.6
 DEBUGFLAGS=-g -Wall
 CPP11=-std=c++11
-CPP14=-std=c++1y
+CPP14=-std=c++14
 OBJ=-c
 INCLUDE=-I/opt/local/include/ -Ilib/openssl/include
 LDFLAGS=-L/opt/local/lib/ -L lib/openssl -lcrypto -lssl -ldl
