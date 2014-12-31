@@ -32,7 +32,9 @@ int main(void) {
   
   MerkleRoot->setPayload(*t1);
   
-  decltype(auto) MerkleRootPtr = std::make_unique<BasicTreeNode<std::string>>(*MerkleRoot);
+  auto MerkleRootRvalue = std::move(MerkleRoot);
+  
+  decltype(auto) MerkleRootPtr = std::make_unique<BasicTreeNode<std::string>>(*MerkleRootRvalue);
   std::cout << "MerkleRootPtr's type =    "
   << type_id_with_cvr<decltype(MerkleRootPtr)>().pretty_name();
   
