@@ -23,7 +23,7 @@ redblack: src/c_redblack.hpp src/c_redblack_main.cpp
 	$(CC) $(CPP11) $(DEBUGFLAGS) $(INCLUDE) src/c_redblack_main.cpp -o bin/c_redlback_main
 
 tree: src/tree.cc src/tree.hpp
-	$(CXX) $(CPP14) $(DEBUGFLAGS) $(INCLUDE)  src/tree.cc
+	$(CXX) $(CPP14) $(DEBUGFLAGS) $(INCLUDE)  src/tree.cc -o bin/merkleplay
 
 blockchain: blockchain.hpp c_redblack.hpp
 
