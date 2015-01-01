@@ -33,11 +33,11 @@ namespace tree {
 
   public:
     BasicTreeNode();
-    BasicTreeNode(const BasicTreeNode& other);
+    BasicTreeNode(const BasicTreeNode& other) = default;
     BasicTreeNode(BasicTreeNode&& other);
     ~BasicTreeNode() = default;
     
-    BasicTreeNode& operator=(const BasicTreeNode& other);
+    //BasicTreeNode& operator=(const BasicTreeNode& other);
     BasicTreeNode& operator=(BasicTreeNode&& other);
     
     //! getter and setter for hash
@@ -68,15 +68,6 @@ namespace tree {
     this->payload = nullptr;
   }
   
-  //! copy ctor
-  template<typename T>
-  BasicTreeNode<T>::BasicTreeNode(const BasicTreeNode& other) {
-    auto tmp = other;
-    this->payload = std::move(tmp.payload);
-    this->left = std::move(tmp.left);
-    this->right = std::move(tmp.right);
-  }
-  
   //! move ctor
   template<typename T>
   BasicTreeNode<T>::BasicTreeNode(BasicTreeNode&& other)
@@ -86,14 +77,6 @@ namespace tree {
     other->payload = nullptr;
     other->left = nullptr;
     other->right = nullptr;
-  }
-  
-  //! copy assignment
-  template<typename T>
-  BasicTreeNode<T>& BasicTreeNode<T>::operator=(const BasicTreeNode& other) {
-    BasicTreeNode<T> tmp = other;
-    std::swap(tmp, *this);
-    return *this;
   }
   
   //! move assignment operator
