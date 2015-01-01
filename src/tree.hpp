@@ -72,9 +72,9 @@ namespace tree {
   template<typename T>
   BasicTreeNode<T>::BasicTreeNode(const BasicTreeNode& other) {
     auto tmp = other;
-    this->payload = std::make_unique<T>(tmp.payload);
-    this->left = std::move(std::make_unique<T>(tmp.left));
-    this->right = std::move(std::make_unique<T>(tmp.right));
+    this->payload = std::move(tmp.payload);
+    this->left = std::move(tmp.left);
+    this->right = std::move(tmp.right);
   }
   
   //! move ctor
